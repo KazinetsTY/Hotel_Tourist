@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'hotel_room',
     'core',
     'bootstrap5',
-    'user_role'
+    'user_role',
 
 
 ]

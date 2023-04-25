@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load bootstrap5 %}
+{% block title %}Создание номера{% endblock %}
+{% block sidebar %}
+    {% include 'sidebar.html' with app_name='hotel_room' %}
+{% endblock %}
+{% block content %}
+    <h1>Бронирование номера</h1>
+    <form method="post">
+    {% csrf_token %}
+    <div class="form-wrapper">
+        {% bootstrap_form form %}
+    </div>
+    <div>
+        <button class="btn btn-primary" type="submit">Сохранить</button>
+    </div>
+    </form>
+
+
+{% endblock content%}

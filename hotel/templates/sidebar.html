@@ -2,7 +2,7 @@
 
 <div class="sidebar">
     <a href="{% url 'index' %}">
-        <img src="{% static 'logo.jpg' %}" alt="logo">
+        <img src="{% static ... %}" alt="logo">
     </a>
     <ul class="menu">
         <li class="menu_item">
@@ -40,7 +40,7 @@
     <div class="sidebar__profile-block">
         <hr>
         <a href="{% url "core:profile" %}" class="sidebar__profile">
-            <img src="{{ request.user.photo.url }}" alt="profile">
+            <span class="material-symbols-outlined">login</span>
             <span>{{ request.user.first_name }} {{ request.user.last_name }}</span>
         </a>
     </div>

@@ -1,18 +1,11 @@
 {% extends "base.html" %}
+{% load bootstrap5 %}
 {% load static %}
 {% block title %}Подробная информация о номере{% endblock %}
 {% block content %}
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{% url "index" %}">Главная</a></li>
-        <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'hotel_room:list' %}">Номера</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Просмотр номера</li>
-      </ol>
-    </nav>
     <h1>Просмотр номера</h1>
-    <p><img class="img-article-left" src="{{ room.photo }}" alt=""></p>
     <p>Тип номера: {{ room.type }}</p>
-    <p>{{ hotelroom.name }}</p>
+    <p>Название номера: {{ room.name }}</p>
     <p>Описание: {{ room.description }}</p>
     <p> {{ room.price }} BYN/сутки</p>
 {% endblock %}

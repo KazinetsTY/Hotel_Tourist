@@ -1,7 +1,7 @@
 
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
-from django.views.generic import ListView, CreateView, DetailView, DeleteView, UpdateView
+from django.views.generic import ListView, CreateView, DetailView, DeleteView, UpdateView, TemplateView
 from django.db.models import Count
 from django.urls import reverse_lazy
 from django.contrib import messages
@@ -60,3 +60,13 @@ class RoomDeleteView(PermissionRequiredMixin, LoginRequiredMixin, SuccessMessage
         if self.success_message:
             messages.success(self.request, self.success_message)
         return self.delete(*args, **kwargs)
+
+
+class BookingListView(TemplateView, PermissionRequiredMixin, LoginRequiredMixin, ):
+    permission_required = "user_role.change_role"
+    template_name = "hotel_room/booking.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['bookings'] = self.request.user.booking_set.all()
+        return context
