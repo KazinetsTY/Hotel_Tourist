@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load bootstrap5 %}
+{% block title %}Роли{% endblock %}
+{% block sidebar %}
+    {% include 'sidebar.html' with app_name='role' %}
+{% endblock %}
+{% block content %}
+    <div class="cards-heading">
+        <h1>Роли</h1>
+        <a href="{% url "core:role_create" %}" class="btn add">
+            <span class="material-symbols-outlined">
+                add
+            </span>
+            <span>Создать роль</span>
+        </a>
+    </div>
+    {% if roles %}
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">Роль</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for role in roles %}
+                <tr>
+                  <th scope="row">{{ role.id }}</th>
+                  <td>{{ role.name }}</td>
+                  <td>{% if perms.user_role.change_role %}<a href="{% url "core:role_update" role.pk %}">Редактировать</a>{% endif %}</td>
+                </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% bootstrap_pagination page_obj %}
+    {% endif %}
+{% endblock %}

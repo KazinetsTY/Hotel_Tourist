@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load bootstrap5 %}
+{% block css %}{{ form.media.css }}{% endblock %}
+{% block title %}Редактирование номера{% endblock %}
+{% block content %}
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url "index" %}">Главная</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="{% url "hotel_room:list" %}">Номера</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Редактирование номера</li>
+      </ol>
+    </nav>
+    <h1>Редактирование номера</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-wrapper">
+            {% bootstrap_form form %}
+        </div>
+        <div>
+            <a class="btn btn-primary" href="{% url 'hotel_room:detail' room.pk %}">Назад</a>
+            <button class="btn btn-primary" type="submit">Сохранить</button>
+        </div>
+    </form>
+{% endblock %}

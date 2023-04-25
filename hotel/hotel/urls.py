@@ -17,7 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from core.views import IndexView
+
 urlpatterns = [
+    path('', IndexView.as_view(), name="index"),
+    path('core/', include("core.urls")),
     path('admin/', admin.site.urls),
     path('room/', include("hotel_room.urls", namespace='room')),
+
+
 ]

@@ -1,0 +1,47 @@
+{% load static %}
+
+<div class="sidebar">
+    <a href="{% url 'index' %}">
+        <img src="{% static 'logo.jpg' %}" alt="logo">
+    </a>
+    <ul class="menu">
+        <li class="menu_item">
+            <a class="menu_link" href="{% url 'index' %}">
+                <span class="material-symbols-outlined">location_home</span>
+                <span>Главная</span>
+
+            </a>
+        </li>
+            <li class="menu__item">
+                <a class="menu__link {% if app_name == 'users' %}selected{% endif %}" href="{% url "core:users_list" %}">
+                    <span class="material-symbols-outlined">person</span>
+                    <span>Пользователи</span>
+                </a>
+            </li>
+        <li class="menu__item">
+            <a class="menu__link {% if app_name == 'role' %}selected{% endif %}" href="{% url "core:role_list" %}">
+                <span class="material-symbols-outlined">groups</span>
+                <span>Роли</span>
+            </a>
+        </li>
+        <li class="menu_item">
+            <a class="menu_link {% if app_name == 'hotel_room' %}selected{% endif %}" href="{% url 'hotel_room:list' %}">
+                <span class="material-symbols-outlined">king_bed</span>
+                <span>Номера</span>
+            </a>
+        </li>
+        <li class="menu_item">
+            <a class="menu_link {% if app_name == 'core' %}selected{% endif %}" href="{% url 'core:login' %}">
+                <span class="material-symbols-outlined">login</span>
+                <span>Войти</span>
+            </a>
+        </li>
+    </ul>
+    <div class="sidebar__profile-block">
+        <hr>
+        <a href="{% url "core:profile" %}" class="sidebar__profile">
+            <img src="{{ request.user.photo.url }}" alt="profile">
+            <span>{{ request.user.first_name }} {{ request.user.last_name }}</span>
+        </a>
+    </div>
+</div>

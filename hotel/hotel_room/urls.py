@@ -1,10 +1,14 @@
 from django.urls import path
 
-from hotel_room.views import index
+from hotel_room import views
 
 app_name = "hotel_room"
 
 
 urlpatterns = [
-    path("", index, name="list"),
+    path("", views.RoomListView.as_view(), name="list"),
+    path("create/", views.RoomCreateView.as_view(), name="create"),
+    path("<int:pk>/", views.RoomDetailView.as_view(), name="detail"),
+    path("<int:pk>/update", views.RoomUpdateView.as_view(), name="update"),
+    path("<int:pk>/delete", views.RoomDeleteView.as_view(), name="delete"),
 ]
