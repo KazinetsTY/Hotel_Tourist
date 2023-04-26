@@ -40,7 +40,7 @@ class Booking(models.Model):
     start_date = models.DateField(auto_now_add=False, verbose_name="Дата заезда", blank=False)
     end_date = models.DateField(auto_now_add=False, verbose_name="Дата выезда", blank=False)
     comment = models.TextField(verbose_name="Комментарий", blank=True)
-    created_on = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=True)
 
     def __str__(self):

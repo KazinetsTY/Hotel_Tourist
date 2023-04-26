@@ -6,15 +6,11 @@
 {% endblock %}
 {% block content %}
     <h1>Бронирование номера</h1>
-    <form method="post">
+    <form method="POST">
     {% csrf_token %}
-    <div class="form-wrapper">
-        {% bootstrap_form form %}
-    </div>
+        {{ form.as_p }}
     <div>
         <button class="btn btn-primary" type="submit">Сохранить</button>
     </div>
     </form>
-
-
 {% endblock content%}
