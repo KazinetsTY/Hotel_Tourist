@@ -1,15 +1,18 @@
-from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.models import Group
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, TemplateView, UpdateView
 
-from core.forms import UserCreationForm, UserUpdateForm, RoleCreationForm
+from core.forms import UserCreationForm, UserUpdateForm, RoleCreationForm, UserRegisterForm
 from core.models import User
 
 from core.const import PAGE_SIZE
 from user_role.models import Role
+
+
 
 
 class IndexView(TemplateView):
@@ -70,5 +73,17 @@ class RoleUpdateView(
     success_url = reverse_lazy("core:role_list")
     success_message = "Роль успешно обновлена"
 
+
+def register(request):
+    if request.method == "POST":
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, 'Пользователь успешно создан')
+            return redirect('core:login')
+    else:
+        form = UserRegisterForm()
+    return render(request, 'core/register.html', {'form': form})
 
 

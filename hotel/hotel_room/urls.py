@@ -10,6 +10,5 @@ urlpatterns = [
     path("create/", views.RoomCreateView.as_view(), name="create"),
     path("<int:pk>/", views.RoomDetailView.as_view(), name="detail"),
     path("<int:pk>/update/", views.RoomUpdateView.as_view(), name="update"),
-    path("<int:pk>/delete/", views.RoomDeleteView.as_view(), name="delete"),
     path("<int:pk>/booking/", views.book_room, name="booking"),
 ]

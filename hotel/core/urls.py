@@ -16,4 +16,5 @@ urlpatterns = [
     path("users/roles/create/", views.RoleCreateView.as_view(), name="role_create"),
     path("users/roles/<int:pk>/update/", views.RoleUpdateView.as_view(), name="role_update"),
     path("users/profile/", TemplateView.as_view(template_name="core/users/profile.html"), name="profile"),
+    path("register/", views.register, name="register"),
 ]

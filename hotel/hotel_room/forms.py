@@ -9,7 +9,7 @@ class RoomForm(forms.ModelForm):
         model = Room
         fields = '__all__'
 
-
+# TODO добавить виджеты
 class BookRoom(forms.ModelForm):
     class Meta:
         model = Booking

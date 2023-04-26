@@ -20,6 +20,7 @@ class RoomListView(ListView):
     queryset = models.Room.objects.all()
 
 
+# TODO success_message доработать вывод на экран
 class RoomCreateView(PermissionRequiredMixin,
                      LoginRequiredMixin,
                      SuccessMessageMixin,
@@ -31,6 +32,7 @@ class RoomCreateView(PermissionRequiredMixin,
     success_message = "Запись успешно создана"
 
 
+# TODO разобраться почему не выводятся детали номера
 class RoomDetailView(PermissionRequiredMixin, DetailView):
     permission_required = "hotel_room.view_room"
     model = models.Room
@@ -38,6 +40,7 @@ class RoomDetailView(PermissionRequiredMixin, DetailView):
     context_object_name = "detail"
 
 
+# TODO добавить в html-файл редактировать номер
 class RoomUpdateView(FormRequestKwargMixin,
                      PermissionRequiredMixin,
                      LoginRequiredMixin,
@@ -50,20 +53,7 @@ class RoomUpdateView(FormRequestKwargMixin,
     success_message = "Запись успешно обновлена"
 
 
-class RoomDeleteView(PermissionRequiredMixin, LoginRequiredMixin, SuccessMessageMixin, DeleteView):
-    permission_required = "hotel_room.delete_room"
-    model = models.Room
-    success_url = reverse_lazy('hotel_room:list')
-    success_message = "Запись успешно удалена"
-
-    def get(self, *args, **kwargs):
-        if self.success_message:
-            messages.success(self.request, self.success_message)
-        return self.delete(*args, **kwargs)
-
-
+# TODO переделать booking
 def book_room(request, pk):
     form = forms.BookRoom
-    return render(request, 'hotel_room/booking.html', {'form': form})
-
-
+    return render(request, 'hotel_room/booking/booking.html', {'form': form})

@@ -71,3 +71,11 @@ class UserUpdateForm(forms.ModelForm):
             "last_name",
             "photo"
         ]
+
+
+class UserRegisterForm(UserCreationForm):
+    email = forms.EmailField()
+
+    class Meta:
+        model = User
+        fields = ['email', 'first_name', 'last_name', 'password1', 'password2']
