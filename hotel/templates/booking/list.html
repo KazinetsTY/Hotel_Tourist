@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load bootstrap5 %}
+{% block title %}Создание номера{% endblock %}
+{% block sidebar %}
+    {% include 'sidebar.html' with app_name='booking' %}
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>Саисок забронированных номеров</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Название номера</th>
+                    <th scope="col">Тип номера</th>
+                    <th scope="col">Дата заезда</th>
+                    <th scope="col">Дата выезда</th>
+                    <th scope="col">Электронный адрес</th>
+                    <th scope="col">Имя Фамилия</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in booking %}
+                    <tr>
+                        <td>{{ book.id }}</td>
+                        <td>{{ book.room.name }}</td>
+                        <td>{{ book.room.type }}</td>
+                        <td>{{ book.start_date|date:"d.m.Y" }}</td>
+                        <td>{{ book.end_date|date:"d.m.Y" }}</td>
+                        <td>{{ book.user.email }}</td>
+                        <td>{{ book.user.first_name }}{{ book.user.last_name }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content%}

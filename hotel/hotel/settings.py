@@ -45,10 +45,13 @@ INSTALLED_APPS = [
     'bootstrap5',
     'user_role',
     'crispy_forms',
-
+    'booking',
+    'debug_toolbar',
+    'django_flatpickr',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -122,7 +125,7 @@ TIME_ZONE = 'Europe/Minsk'
 USE_I18N = True
 
 USE_TZ = True
-
+DATE_FORMAT = "d.m.Y"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
@@ -153,3 +156,4 @@ PERMISSIONS_LABELS = {
     "delete": "Удаление",
 }
 
+AUTHENTICATION_BACKENDS = ['user_role.backends.ModelBackend']

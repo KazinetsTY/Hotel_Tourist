@@ -26,8 +26,9 @@ urlpatterns = [
     path('core/', include("core.urls")),
     path('admin/', admin.site.urls),
     path('room/', include("hotel_room.urls", namespace='room')),
+    path('booking/', include("booking.urls", namespace='booking')),
+    path('__debug__/', include('debug_toolbar.urls')),
 ]
-
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

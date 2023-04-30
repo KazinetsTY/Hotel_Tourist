@@ -11,21 +11,15 @@
         <a class="btn-add" href="{% url 'hotel_room:create' %} ">Добавить номер</a>
         <div class="col">
            {% for room in room %}
-            <div class="card" style="width: 18rem;">
-              <img src="{{ request.room.photo.url }}" class="card-img-top" alt="...">
-              <div class="card-body">
-                 <div class="card-header">
-                    <h5>{{ room.name }}</h5>
-                 </div>
-                 <h5 class="card-text">
-                    {{ room.price }} BYN/сутки
-                 </h5>
-                 <div class="card-footer">
-                    <a class="btn" href="{% url 'hotel_room:detail' room.pk %}" role="button">Подробнее</a>
-                    <a class="btn" href="{% url 'hotel_room:booking' room.pk %}" role="button">Забранировать</a>
-                 </div>
-              </div>
-            </div>
+               <div class="card" style="width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ room.name }}</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">{{ room.price }} BYN/сутки</h6>
+                    <p class="clip">{{ room.description }}</p>
+                    <a href="{% url 'hotel_room:detail' room.pk %}" class="card-link">Подробнее</a>
+                    <a href="{% url 'booking:create' room_id=room.pk %}" class="card-link">Забранировать</a>
+                  </div>
+                </div>
             {% endfor %}
         </div>
     </div>
