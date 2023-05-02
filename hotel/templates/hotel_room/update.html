@@ -11,14 +11,13 @@
       </ol>
     </nav>
     <h1>Редактирование номера</h1>
-    <form method="post">
+        <form method="post">
         {% csrf_token %}
-        <div class="form-wrapper">
-            {% bootstrap_form form %}
-        </div>
+            <div class="form-wrapper">
+                {% bootstrap_form form %}
+            </div>
         <div>
-            <a class="btn btn-primary" href="{% url 'hotel_room:detail' room.pk %}">Назад</a>
-            <button class="btn btn-primary" type="submit">Сохранить</button>
+            <button type="submit">Сохранить</button>
         </div>
-    </form>
+        </form>
 {% endblock %}

@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib import messages
 from django.core.checks import messages
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, TemplateView
 from django.urls import reverse_lazy
@@ -52,7 +53,3 @@ class RoomUpdateView(FormRequestKwargMixin,
     form_class = forms.RoomForm
     success_message = "Запись успешно обновлена"
 
-    def get(self, *args, **kwargs):
-        if self.success_message:
-            messages.success(self.request, self.success_message)
-        return self.delete(*args, **kwargs)

@@ -15,6 +15,20 @@
     {% endblock %}
     <div class="content">
         <div>
+            {% block content %}
+                <div class="card text-bg-dark">
+                    <img src="{% static 'base_background.jpg' %} " class="card-img" alt="base">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">Добро пожаловать!</h5>
+                        <p class="card-text">Здесь должно быть краткое описание отеля :)</p>
+                        <a class="btn btn-detail" href="{% url 'room:list' %}" role="button">
+                            <span>Смотреть номера</span>
+                        </a>
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+        <div>
             {% if messages %}
                 {% for message in messages %}
                     <div class="alert alert-{{ message.tags }}">
@@ -22,10 +36,9 @@
                     </div>
                 {% endfor %}
             {% endif %}
-            {% block content %}
-            {% endblock %}
         </div>
     </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>

@@ -1,4 +1,88 @@
-.logo {
+@import "sidebar.css";
+@import "navbar.css";
+@import "content.css";
+@import "login.css";
+
+
+* {
+    box-sizing: border-box;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+button {
+    background-color: #16A34A;
+    color: #ffffff;
+    border: none;
+}
+
+body {
+    background-color: #eff3f8;
+    font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+}
+.text-center {
+    font-size: 72px;
+}
+
+.btn-success {
+    background-color: #1a7d24;
+    color: #ffffff;
+    border: none;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.btn-detail {
+    background-color: #1a7d24;
+    color: #ffffff;
+    border: none;
+}
+
+.btn-detail:hover {
+    background-color: #d6f5d3;
+    color: #ffffff;
+    border: none;
+}
+
+.card {
     display: flex;
-    height: 60px;
+    height: 540px;
+    width: 1080px;
+    margin-right: auto;
+    margin-left: auto;
+    align-items: center;
+}
+.card img {
+    height: 540px;
+    width: 1080px;
+    align-items: center;
+}
+.card-title {
+    font-size: 48px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.btn-info {
+    background-color: #16A34A;
+    color: #ffffff;
+    border: none;
+}
+
+.btn-info:hover {
+    background: #d6f5d3;
+    color: #ffffff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: #7dcbf0;
+    color: #ffffff;
+    border: none;
+}
+
+.card-subtitle {
+    font-size: 32px;
 }

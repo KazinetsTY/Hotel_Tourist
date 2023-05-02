@@ -8,7 +8,9 @@
     <h1>Создание номера</h1>
     <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+        <div class="form-wrapper">
+            {% bootstrap_form form %}
+        </div>
     <div>
         <button type="submit">Сохранить</button>
     </div>

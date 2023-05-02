@@ -7,17 +7,17 @@
 {% endblock %}
 {% block content %}
     <div class="container">
-      <h1>Список номеров</h1>
-        <a class="btn-add" href="{% url 'hotel_room:create' %} ">Добавить номер</a>
+      <h1 class="text-center">Список номеров</h1>
+        <a class="btn btn-success btn-lg btn-block" href="{% url 'hotel_room:create'  %}">Добавить номер</a>
         <div class="col">
            {% for room in room %}
-               <div class="card" style="width: 18rem;">
+               <div class="card" style="">
                   <div class="card-body">
-                    <h5 class="card-title">{{ room.name }}</h5>
-                    <h6 class="card-subtitle mb-2 text-body-secondary">{{ room.price }} BYN/сутки</h6>
-                    <p class="clip">{{ room.description }}</p>
-                    <a href="{% url 'hotel_room:detail' room.pk %}" class="card-link">Подробнее</a>
-                    <a href="{% url 'booking:create' room_id=room.pk %}" class="card-link">Забранировать</a>
+                      <h5 class="card-title">{{ room.name }}</h5>
+                      <h6 class="card-subtitle mb-2 text-body-secondary">{{ room.price }} BYN/сутки</h6>
+                      <p class="clip">{{ room.description }}</p>
+                      <a href="{% url 'hotel_room:detail' room.pk %}" class="btn btn-info" >Подробнее</a>
+                      <a href="{% url 'booking:create' room_id=room.pk %}" class="btn btn-primary">Забранировать</a>
                   </div>
                 </div>
             {% endfor %}
