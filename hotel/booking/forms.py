@@ -28,7 +28,6 @@ class BookRoom(forms.ModelForm):
     def save(self, commit=True):
         instance = super().save(commit=False)
         instance.room_id = self.request.room_id
-        instance.save()
         instance.user = self.request.user
         instance.save()
         return instance
